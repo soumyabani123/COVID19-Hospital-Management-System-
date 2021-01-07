@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App + jQuery">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <title>COVID-19 PATIENT MANAGEMENT SYSTEM</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link href="style.css" rel="stylesheet">
+   
+</head>
+
+<body class="layout-h">
+    <div class="align-left">
+        <div class="btn-group">
+            <a href="{% url 'home' %}" class="btn btn-light" >Home</a>
+           
+        </div>
+     </div>
+            
+     <div class="container-fluid padding">
+      <div class="row welcome text-center">
+          <div class="col-12">
+              <h1 class="display-4">PATIENT DETAILS</h1>
+              <hr>
+              </div>
+      </div>
+  </div>
+  <div class="container-fluid padding">
+   <div class="row text-center padding">
+       <div class="col-xs-3 col-sm-1 col-md-1">
+           
+           <a href="{% url 'admit_info_details' %}" class="btn btn-info">Admit info</a>
+           
+       </div>
+       
+       <div class="col-xs-3 col-sm-1 col-md-1">
+         
+           <a href="{% url 'discharge_info_details' %}" class="btn btn-info">Discharge info</a>
+           
+       </div>
+       
+      </div>  
+   </div>
+       
+       <!--<div class="col-8">
+         <div class="col-xs-6 col-sm-1 col-md-10">
+            <div class="container text-right">
+      <form method="POST">
+         {% csrf_token %}
+      
+         
+         <input type="radio" values="M" name="gender"/>Male | <input type="radio" values="F" name="gender"/>Female
+        
+         <input type="submit" value="Search"/>
+      </div>
+      </div>
+      
+   </div>-->
+   <div class="row">
+      <div class="col">
+      <div class="card-body">
+         <form action = "" method = "GET">
+            {% csrf_token %} 
+            
+            {{ myfilter.form }} 
+            <input type="submit" value="Search"> 
+        </form> 
+        </div>
+      </div>
+   </div>
+  
+
+           <div class="row">
+                  <div class="col-lg-12">
+                     <div class="panel panel-default"  style="padding: 15px;">
+                           <div class="table-responsive">
+                           <table id="datatable4" class="table table-striped" >
+                              <thead>
+                                 <tr>
+                                    <th style="width:25%">ID</th>
+                                    <th style="width:25%">Name</th>
+                                    
+                                    <th style="width:25%">Age</th>
+                                   
+
+                                    <th style="width:25%">Gender</th>
+                                    
+                                    <th style="width:25%">Address</th>
+                                    
+                                      <th style="width:15%"></th>
+                                      <th style="width:15%"></th>
+                                   
+                                 </tr>
+                              </thead>
+                              
+                           
+                           <tbody>
+                              
+                           {% for patient in covidproject.all %}
+                           <tr>
+                           
+                           <td>{{ patient.patient_id}}</td>
+
+                           <td>{{ patient.patient_name }}</td>
+
+                           <td>{{ patient.age }}</td>
+
+                           <td>{{ patient.gender }}</td>
+
+                           <td>{{ patient.address }}</td>
+                           </tr>
+                           
+                           {% endfor %}
+                           
+                           
+                        </tbody>
+                    </table>
+                  
+                  
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               
+                        
+         
+     <div class="container text-center">
+                  <div class="btn-group">
+                    <!-- <button  style="bottom: 27px;" id="addpatient" class="mb-sm btn btn-primary" type="button">Add Patient</button>-->
+                    <a href="{% url 'addpatient' %}" class="btn btn-dark">Add patient</a>
+                     
+                  </div>
+               </div>
+            
+     
+   
+
+    
+   <!-- =============== VENDOR SCRIPTS ===============-->
+   <!-- MODERNIZR-->
+   <script src="vendor/modernizr/modernizr.custom.js"></script>
+   <!-- JQUERY-->
+   <script src="vendor/jquery/dist/jquery.js"></script>
+   <!-- BOOTSTRAP-->
+   <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+   <script src="vendor/datatables-colvis/js/dataTables.colVis.js"></script>
+   <script src="vendor/datatables/media/js/dataTables.bootstrap.js"></script>
+   <script src="vendor/serialize/jquery.serializejson.js"></script>
+   <!-- STORAGE API-->
+   <script src="vendor/jQuery-Storage-API/jquery.storageapi.js"></script>
+   <!-- JQUERY EASING-->
+   <script src="vendor/jquery.easing/js/jquery.easing.js"></script>
+   <!-- ANIMO-->
+   <script src="vendor/animo.js/animo.js"></script>
+    <script src="vendor/parsley/parsley.min.js"></script>
+       <script src="vendor/sweetalert/dist/sweetalert.min.js"></script>
+   <!-- LOCALIZE-->
+   <script src="vendor/jquery-localize-i18n/dist/jquery.localize.js"></script>
+   <!-- =============== PAGE VENDOR SCRIPTS ===============-->
+   <!-- =============== APP SCRIPTS ===============-->
+   <script src="app/js/app.js"></script>
+<script src="js/patient.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+{% extends 'Patient.html' %}
+
+{% block content %}
+<div class="col-8">
+    <div class="container text-right">
+    <div class="form-group">
+       <form action = "" method = "GET">
+          {% csrf_token %} 
+          <input type="text" id="id_patient_name" name="patient_name">
+          {{filter.form.as_p }} 
+          <input type="submit" value="Submit"> 
+      </form> 
+     <ul>
+     <!--{% for patient in filter.qs %}
+       <li>{{ patient.gender }} </li>
+     {% endfor %}-->
+     </ul>
+    </div>
+    </div>
+    </div>
+    <ul>
+        {% for patient in filter.qs %}
+        <tr>
+           <li>
+           <td>{{ patient.patient_id}}</td>
+
+           <td>{{ patient.patient_name }}</td>
+
+           <td>{{ patient.age }}</td>
+
+           <td>{{ patient.gender }}</td>
+
+           <td>{{ patient.address }}</td>
+        
+           </tr>
+        </li>
+        {% endfor %} 
+     </ul> 
+     {% endblock %}
